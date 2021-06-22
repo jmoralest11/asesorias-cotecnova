@@ -85,19 +85,6 @@
                                                         <option value="VIRTUAL">VIRTUAL</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-12">
-                                                    <div>
-                                                        <label for="#">Añadir Miembros</label>
-                                                    </div>
-                                                    <select name="miembros[]" class="form-control selectpicker" multiple style="width: 450px;">
-                                                        <?php 
-                                                            $estudiantes = conseguirEstudiantes($db);
-                                                            foreach($estudiantes as $estudiante):
-                                                        ?>
-                                                            <option value="<?php echo $estudiante['id']; ?>"><?php echo $estudiante['email']; ?> - <?php echo $estudiante['nombre']; ?> <?php echo $estudiante['apellidos']; ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                </div>
                                                 <div class="form-group">
                                                     <label for="#">Observaciones <strong style="color: red;">*</strong></label>
                                                     <textarea name="descripcion" class="form-control" rows="3" placeholder="Describa sus Inquietudes..."><?php echo $asesoria['descripcion']; ?></textarea>

@@ -43,19 +43,6 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="#">Añadir Miembros <strong style="color: red;">*</strong></label>
-                <select name="miembros[]" class="form-control selectpicker" multiple>
-                    <?php 
-                        $estudiantes = conseguirEstudiantes($db);
-                        foreach($estudiantes as $estudiante):
-                    ?>
-                        <option value="<?php echo $estudiante['id']; ?>"><?php echo $estudiante['email']; ?> - <?php echo $estudiante['nombre']; ?> <?php echo $estudiante['apellidos']; ?></option>
-                    <?php 
-                        endforeach; 
-                    ?>
-                </select>
-            </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="#">Modalidad <strong style="color: red;">*</strong></label>

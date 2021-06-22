@@ -49,6 +49,7 @@
     <!-- Script Configuración Full Calendar -->
     <script type="text/javascript">
         $(document).ready(function() {
+
             $('#calendarioWeb').fullCalendar({
                 header: {
                     left: 'today, prev, next, MyBtn',

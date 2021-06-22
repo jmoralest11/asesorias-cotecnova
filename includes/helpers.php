@@ -44,9 +44,9 @@
         $id = $_SESSION['usuario']['id'];
 
         if ($_SESSION['usuario']['role'] == 'ESTUDIANTE'){
-            $sql = "SELECT asesorias.id, title, descripcion, estado, fecha, start, end, modalidad, comentario FROM asesorias JOIN estudiantes_asesorias ON asesorias.id=estudiantes_asesorias.idasesoria JOIN estudiantes ON estudiantes.id=estudiantes_asesorias.idestudiante WHERE estudiantes.id = $id AND asesorias.estado <> 'CANCELADO';";
-        } else {
-            $sql = "SELECT a.id, doc.nombre, doc.apellidos, asignatura, a.title, a.descripcion, a.start, a.end, a.estado, a.color, a.colorText, a.modalidad, a.comentario FROM asesorias as a JOIN docentes as doc ON doc.id=a.iddocente JOIN asignaturas ON asignaturas.id=a.idasignatura WHERE doc.id = 1 AND a.estado <> 'CANCELADO'";
+            $sql = "SELECT asesorias.id, title, descripcion, estado, fecha, start, end, modalidad, comentario, reporte FROM asesorias JOIN estudiantes_asesorias ON asesorias.id=estudiantes_asesorias.idasesoria JOIN estudiantes ON estudiantes.id=estudiantes_asesorias.idestudiante WHERE estudiantes.id = $id AND asesorias.estado <> 'CANCELADO';";
+        } else if($_SESSION['usuario']['role'] == 'DOCENTE') {
+            $sql = "SELECT a.id, doc.nombre, doc.apellidos, asignatura, a.title, a.descripcion, a.start, a.end, a.estado, a.color, a.colorText, a.modalidad, a.comentario, a.reporte FROM asesorias as a JOIN docentes as doc ON doc.id=a.iddocente JOIN asignaturas ON asignaturas.id=a.idasignatura WHERE doc.id = $id AND a.estado <> 'CANCELADO'";
         }
 
 		$asesorias = mysqli_query($db, $sql);

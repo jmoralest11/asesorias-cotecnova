@@ -25,24 +25,6 @@
         $sql = "UPDATE asesorias SET title = '$titulo', color = '$color', start = '$dateInicial', end = '$dateFinal', modalidad = '$modalidad', descripcion = '$descripcion' WHERE id = $id";
         $result = mysqli_query($db, $sql);
 
-        // Insertar en la BD los miembros de la asesoría
-        if(isset($_POST['miembros'])){
-            foreach($_POST['miembros'] as $miembro){
-
-                // Consulta para comprobar si ya se encuentra relacionado el miembro con la asesoria
-                $sql = "SELECT title FROM asesorias JOIN estudiantes_asesorias ON asesorias.id=estudiantes_asesorias.idasesoria JOIN estudiantes ON estudiantes.id=estudiantes_asesorias.idestudiante WHERE estudiantes.id = $miembro";
-                $result = mysqli_query($db, $sql);
-                
-                // Si esta relacionado no hacemos nada
-                if($result && mysqli_num_rows($result)){
-                    header('Location: gestionar-asesorias.php');
-                } else { // Si no esta relacionado insertamos información en BD
-                    $sql = "INSERT INTO estudiantes_asesorias (idestudiante, idasesoria) VALUES ($miembro, $id)";
-                    $result = mysqli_query($db, $sql);
-                }
-            }
-        }
-
         header('Location: gestionar-asesorias.php');
     }
 ?>

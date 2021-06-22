@@ -27,7 +27,7 @@
         $dateFinal = date_format($dateF,"$fecha H:i:s");
 
         // Insertar en BD los datos de la asesoria
-        $sql = "INSERT INTO asesorias (iddocente, idasignatura, title, descripcion, color, colorText, start, end, estado, modalidad, fecha) VALUES ($docente, $asignatura, '$titulo', '$descripcion', '$color', '#FFFFFF' , '$dateInicial', '$dateFinal', 'PENDIENTE', '$modalidad', NOW())";
+        $sql = "INSERT INTO asesorias (iddocente, idasignatura, title, descripcion, color, colorText, start, end, estado, modalidad, comentario, fecha) VALUES ($docente, $asignatura, '$titulo', '$descripcion', '$color', '#FFFFFF' , '$dateInicial', '$dateFinal', 'PENDIENTE', '$modalidad', NULL, NULL, NOW())";
         $result = mysqli_query($db, $sql);
 
         $sql = "SELECT * FROM asesorias ORDER BY id DESC LIMIT 1";
@@ -40,14 +40,6 @@
         // Insertar en BD la relación entre estudiante y asesoria 
         $sql = "INSERT INTO estudiantes_asesorias (idestudiante, idasesoria) VALUES ($id, $id_asesoria)";
         $result = mysqli_query($db, $sql);
-
-        // Insertar en la BD los miembros de la asesoría
-        if(isset($_POST['miembros'])){
-            foreach($_POST['miembros'] as $miembro){
-                $sql = "INSERT INTO estudiantes_asesorias (idestudiante, idasesoria) VALUES ($miembro, $id_asesoria)";
-                $result = mysqli_query($db, $sql);
-            }
-        }
 
         header('Location: calendario.php');
 

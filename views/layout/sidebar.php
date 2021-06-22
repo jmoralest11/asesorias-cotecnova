@@ -5,7 +5,7 @@
                 <img src="assets/img/admin-logo.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?php echo $_SESSION['usuario']['nombre'] ?> <?php echo $_SESSION['usuario']['apellidos'] ?></a>
+                <a href="#" class="d-block"><?php echo $_SESSION['usuario']['nombre'] ?></a>
             </div>
         </div>
 
