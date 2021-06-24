@@ -27,7 +27,7 @@
         $dateFinal = date_format($dateF,"$fecha H:i:s");
 
         // Insertar en BD los datos de la asesoria
-        $sql = "INSERT INTO asesorias (iddocente, idasignatura, title, descripcion, color, colorText, start, end, estado, modalidad, comentario, fecha) VALUES ($docente, $asignatura, '$titulo', '$descripcion', '$color', '#FFFFFF' , '$dateInicial', '$dateFinal', 'PENDIENTE', '$modalidad', NULL, NULL, NOW())";
+        $sql = "INSERT INTO asesorias (iddocente, idasignatura, title, descripcion, color, colorText, start, end, estado, modalidad, comentario, reporte, fecha) VALUES ($docente, $asignatura, '$titulo', '$descripcion', '$color', '#FFFFFF' , '$dateInicial', '$dateFinal', 'PENDIENTE', '$modalidad', NULL, NULL, NOW())";
         $result = mysqli_query($db, $sql);
 
         $sql = "SELECT * FROM asesorias ORDER BY id DESC LIMIT 1";
